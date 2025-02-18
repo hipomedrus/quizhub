@@ -91,10 +91,10 @@
   <div class="container">
     <!-- Karşılama Ekranı -->
     <div class="welcome-screen active">
-      <h1>Bilgi Testi</h1>
-      <p>Bu test Türkçe kelime dağarcığınızı test etmek için hazırlanmıştır.</p>
-      <p>Toplam 10 sorudan oluşan testte her soru için tek seçenek işaretleyebilirsiniz.</p>
-      <button onclick="baslat()">Testi Başlat</button>
+      <h1>Kelime Dağarcığı Testi</h1>
+      <p>Türkçe'ye ne kadar hakimsin, test etmej ister misin?</p>
+      <p>Toplam 10 sorudan oluşan bu test ile kelime dağarcığını test et!</p>
+      <button onclick="baslat()">Başla</button>
     </div>
 
     <!-- İlerleme Barı (Başlangıçta gizli) -->
@@ -110,71 +110,29 @@
     </div>
   </div>
 
- <script>
-  const sorular = [
-    {
-      soru: "Mütevazı kelimesinin anlamı aşağıdakilerden hangisidir?",
-      cevaplar: ["Gösterişli", "Alçakgönüllü", "Kibirli", "Gururlu"],
-      dogruCevap: 1
-    },
-    {
-      soru: "İstikrarlı kelimesinin en yakın anlamı aşağıdakilerden hangisidir?",
-      cevaplar: ["Dengesiz", "Değişken", "Sabit", "Geçici"],
-      dogruCevap: 2
-    },
-    {
-      soru: "Müreffeh kelimesi aşağıdakilerden hangisini ifade eder?",
-      cevaplar: ["Yoksul", "Refah içinde, zengin", "Yalnız", "Sefil"],
-      dogruCevap: 1
-    },
-    {
-      soru: "Mecazi kelimesinin anlamı aşağıdakilerden hangisidir?",
-      cevaplar: ["Gerçek anlamıyla", "İronik", "Benzetme yoluyla anlatılan", "Doğrudan"],
-      dogruCevap: 2
-    },
-    {
-      soru: "Mütemadiyen kelimesinin anlamı aşağıdakilerden hangisidir?",
-      cevaplar: ["Aralıklı", "Kesintisiz, sürekli", "Rastgele", "Sınırlı"],
-      dogruCevap: 1
-    },
-    {
-      soru: "Vasıta kelimesi aşağıdakilerden hangisini en doğru şekilde ifade eder?",
-      cevaplar: ["Amaç", "Sonuç", "Araç, enstrüman", "Yöntem"],
-      dogruCevap: 2
-    },
-    {
-      soru: "Muktedir kelimesinin anlamı aşağıdakilerden hangisidir?",
-      cevaplar: ["Güçsüz", "Etkisiz", "Yetenekli, kudret sahibi", "İsteksiz"],
-      dogruCevap: 2
-    },
-    {
-      soru: "Nimet kelimesinin anlamı aşağıdakilerden hangisidir?",
-      cevaplar: ["Talih", "Lütuf, nimet", "Felaket", "Dert"],
-      dogruCevap: 1
-    },
-    {
-      soru: "Müşkülpesent kelimesi aşağıdakilerden hangisini ifade eder?",
-      cevaplar: ["Titiz, seçici", "Kolay beğenen", "Umursamaz", "Hoşnutsuz"],
-      dogruCevap: 0
-    },
-    {
-      soru: "Müessir kelimesinin en yakın anlamı aşağıdakilerden hangisidir?",
-      cevaplar: ["Eski", "Zamanın etkisinde kalmış", "Etkili, kuvvetli", "Önemsiz"],
-      dogruCevap: 2
-    }
-  ];
-
-
+  <script>
+    // sorular (questions) dizisi, JSON dosyasından yüklenecek
+    let sorular = [];
     let currentSoru = 0;
     let puan = 0;
 
+    // JSON dosyasından soruları (questions) yükleme işlemi
+    fetch('questions.json')
+      .then(response => response.json())
+      .then(data => {
+        sorular = data;
+        // Sorular yüklendikten sonra quiz'i başlatan fonksiyon çağrılır
+        initQuiz();
+      })
+      .catch(error => {
+        console.error('Soru yüklenirken bir hata oluştu:', error);
+      });
+
     function baslat() {
-      // Karşılama ekranını tamamen gizle
+      // Karşılama ekranını gizle
       document.querySelector('.welcome-screen').classList.remove('active');
       // İlerleme barını göster
       document.querySelector('.ilerleme-bar').style.display = 'block';
-      // Quiz'i başlat
-      initQuiz();
     }
 
     function initQuiz() {
@@ -195,11 +153,13 @@
         container.insertAdjacentHTML('beforeend', soruHTML);
       });
 
+      // İlk soruyu aktif hale getiriyoruz
       document.querySelector('[data-soru="0"]').classList.add('active');
       updateIlerleme();
     }
 
     function cevapSec(secilenIndex, soruIndex) {
+      // Kullanıcı yalnızca aktif soruyu cevaplayabilir
       if (soruIndex !== currentSoru) return;
       
       if (secilenIndex === sorular[soruIndex].dogruCevap) {
