@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kelime Dağarcığı Testi</title>
+  <style>
+    body {
+      background-color: #000; 
+      color: #fff;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: transparent;
+    }
+
+    .welcome-screen {
+      text-align: center;
+      padding: 50px 20px;
+      display: none;
+    }
+    .welcome-screen.active {
+      display: block;
+    }
+
+    .soru-container {
+      display: none;
+    }
+    .soru-container.active {
+      display: block;
+    }
+
+    .soru-no {
+      color: #666;
+      margin-bottom: 10px;
+    }
+
+    .soru-text {
+      font-size: 1.2em;
+      margin-bottom: 30px;
+    }
+
+    .cevap-kutusu {
+      background-color: #333;
+      padding: 15px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .cevap-kutusu:hover {
+      background-color: #444;
+      transform: translateX(10px);
+    }
+
+    .ilerleme-bar {
+      width: 100%;
+      height: 5px;
+      background-color: #333;
+      margin-bottom: 20px;
+    }
+
+    .ilerleme {
+      height: 100%;
+      background-color: #1860DB;
+      transition: width 0.5s ease;
+    }
+
+    .sonuc-ekrani {
+      display: none;
+      text-align: center;
+    }
+
+    button {
+      background-color: #1860DB;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Karşılama Ekranı -->
+    <div class="welcome-screen active">
+      <h1>Bilgi Testi</h1>
+      <p>Bu test Türkçe kelime dağarcığınızı test etmek için hazırlanmıştır.</p>
+      <p>Toplam 10 sorudan oluşan testte her soru için tek seçenek işaretleyebilirsiniz.</p>
+      <button onclick="baslat()">Testi Başlat</button>
+    </div>
+
+    <!-- İlerleme Barı (Başlangıçta gizli) -->
+    <div class="ilerleme-bar" style="display: none;">
+      <div class="ilerleme" style="width: 0%"></div>
+    </div>
+    
+    <!-- Sonuç Ekranı -->
+    <div class="sonuc-ekrani">
+      <h2>Test Tamamlandı!</h2>
+      <p>Puanınız: <span id="puan">0</span>/100</p>
+      <button onclick="location.reload()">Tekrar Dene</button>
+    </div>
+  </div>
+
+ <script>
+  const sorular = [
+    {
+      soru: "Mütevazı kelimesinin anlamı aşağıdakilerden hangisidir?",
+      cevaplar: ["Gösterişli", "Alçakgönüllü", "Kibirli", "Gururlu"],
+      dogruCevap: 1
+    },
+    {
+      soru: "İstikrarlı kelimesinin en yakın anlamı aşağıdakilerden hangisidir?",
+      cevaplar: ["Dengesiz", "Değişken", "Sabit", "Geçici"],
+      dogruCevap: 2
+    },
+    {
+      soru: "Müreffeh kelimesi aşağıdakilerden hangisini ifade eder?",
+      cevaplar: ["Yoksul", "Refah içinde, zengin", "Yalnız", "Sefil"],
+      dogruCevap: 1
+    },
+    {
+      soru: "Mecazi kelimesinin anlamı aşağıdakilerden hangisidir?",
+      cevaplar: ["Gerçek anlamıyla", "İronik", "Benzetme yoluyla anlatılan", "Doğrudan"],
+      dogruCevap: 2
+    },
+    {
+      soru: "Mütemadiyen kelimesinin anlamı aşağıdakilerden hangisidir?",
+      cevaplar: ["Aralıklı", "Kesintisiz, sürekli", "Rastgele", "Sınırlı"],
+      dogruCevap: 1
+    },
+    {
+      soru: "Vasıta kelimesi aşağıdakilerden hangisini en doğru şekilde ifade eder?",
+      cevaplar: ["Amaç", "Sonuç", "Araç, enstrüman", "Yöntem"],
+      dogruCevap: 2
+    },
+    {
+      soru: "Muktedir kelimesinin anlamı aşağıdakilerden hangisidir?",
+      cevaplar: ["Güçsüz", "Etkisiz", "Yetenekli, kudret sahibi", "İsteksiz"],
+      dogruCevap: 2
+    },
+    {
+      soru: "Nimet kelimesinin anlamı aşağıdakilerden hangisidir?",
+      cevaplar: ["Talih", "Lütuf, nimet", "Felaket", "Dert"],
+      dogruCevap: 1
+    },
+    {
+      soru: "Müşkülpesent kelimesi aşağıdakilerden hangisini ifade eder?",
+      cevaplar: ["Titiz, seçici", "Kolay beğenen", "Umursamaz", "Hoşnutsuz"],
+      dogruCevap: 0
+    },
+    {
+      soru: "Müessir kelimesinin en yakın anlamı aşağıdakilerden hangisidir?",
+      cevaplar: ["Eski", "Zamanın etkisinde kalmış", "Etkili, kuvvetli", "Önemsiz"],
+      dogruCevap: 2
+    }
+  ];
+
+
+    let currentSoru = 0;
+    let puan = 0;
+
+    function baslat() {
+      // Karşılama ekranını tamamen gizle
+      document.querySelector('.welcome-screen').classList.remove('active');
+      // İlerleme barını göster
+      document.querySelector('.ilerleme-bar').style.display = 'block';
+      // Quiz'i başlat
+      initQuiz();
+    }
+
+    function initQuiz() {
+      const container = document.querySelector('.container');
+      
+      sorular.forEach((soru, index) => {
+        const soruHTML = `
+          <div class="soru-container" data-soru="${index}">
+            <div class="soru-no">Soru ${index + 1}</div>
+            <div class="soru-text">${soru.soru}</div>
+            <div class="cevaplar">
+              ${soru.cevaplar.map((cevap, i) => `
+                <div class="cevap-kutusu" onclick="cevapSec(${i}, ${index})">${cevap}</div>
+              `).join('')}
+            </div>
+          </div>
+        `;
+        container.insertAdjacentHTML('beforeend', soruHTML);
+      });
+
+      document.querySelector('[data-soru="0"]').classList.add('active');
+      updateIlerleme();
+    }
+
+    function cevapSec(secilenIndex, soruIndex) {
+      if (soruIndex !== currentSoru) return;
+      
+      if (secilenIndex === sorular[soruIndex].dogruCevap) {
+        puan += Math.round(100 / sorular.length);
+      }
+
+      currentSoru++;
+      
+      if (currentSoru < sorular.length) {
+        document.querySelector(`[data-soru="${soruIndex}"]`).classList.remove('active');
+        document.querySelector(`[data-soru="${currentSoru}"]`).classList.add('active');
+        updateIlerleme();
+      } else {
+        updateIlerleme();
+        bitirQuiz();
+      }
+    }
+
+    function updateIlerleme() {
+      const ilerlemeYuzde = (currentSoru / sorular.length) * 100;
+      document.querySelector('.ilerleme').style.width = `${ilerlemeYuzde}%`;
+    }
+
+    function bitirQuiz() {
+      document.querySelector('.soru-container.active')?.classList.remove('active');
+      document.querySelector('.sonuc-ekrani').style.display = 'block';
+      document.getElementById('puan').textContent = puan;
+    }
+  </script>
+</body>
+</html>
