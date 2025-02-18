@@ -1,3 +1,3 @@
 # quizhub
 
-[Kelime Dağarcığı Testi](/kelime-dagarcigi.html)
+[Kelime Dağarcığı Testi](https://hipomedurs.github.io/quizhub/kelime-dagarcigi.html)
