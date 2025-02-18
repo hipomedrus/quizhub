@@ -1,0 +1,52 @@
+[
+  {
+    "soru": "Mütevazı kelimesinin anlamı aşağıdakilerden hangisidir?",
+    "cevaplar": ["Gösterişli", "Alçakgönüllü", "Kibirli", "Gururlu"],
+    "dogruCevap": 1
+  },
+  {
+    "soru": "İstikrarlı kelimesinin en yakın anlamı aşağıdakilerden hangisidir?",
+    "cevaplar": ["Dengesiz", "Değişken", "Sabit", "Geçici"],
+    "dogruCevap": 2
+  },
+  {
+    "soru": "Müreffeh kelimesi aşağıdakilerden hangisini ifade eder?",
+    "cevaplar": ["Yoksul", "Refah içinde, zengin", "Yalnız", "Sefil"],
+    "dogruCevap": 1
+  },
+  {
+    "soru": "Mecazi kelimesinin anlamı aşağıdakilerden hangisidir?",
+    "cevaplar": ["Gerçek anlamıyla", "İronik", "Benzetme yoluyla anlatılan", "Doğrudan"],
+    "dogruCevap": 2
+  },
+  {
+    "soru": "Mütemadiyen kelimesinin anlamı aşağıdakilerden hangisidir?",
+    "cevaplar": ["Aralıklı", "Kesintisiz, sürekli", "Rastgele", "Sınırlı"],
+    "dogruCevap": 1
+  },
+  {
+    "soru": "Vasıta kelimesi aşağıdakilerden hangisini en doğru şekilde ifade eder?",
+    "cevaplar": ["Amaç", "Sonuç", "Araç, enstrüman", "Yöntem"],
+    "dogruCevap": 2
+  },
+  {
+    "soru": "Muktedir kelimesinin anlamı aşağıdakilerden hangisidir?",
+    "cevaplar": ["Güçsüz", "Etkisiz", "Yetenekli, kudret sahibi", "İsteksiz"],
+    "dogruCevap": 2
+  },
+  {
+    "soru": "Nimet kelimesinin anlamı aşağıdakilerden hangisidir?",
+    "cevaplar": ["Talih", "Lütuf, nimet", "Felaket", "Dert"],
+    "dogruCevap": 1
+  },
+  {
+    "soru": "Müşkülpesent kelimesi aşağıdakilerden hangisini ifade eder?",
+    "cevaplar": ["Titiz, seçici", "Kolay beğenen", "Umursamaz", "Hoşnutsuz"],
+    "dogruCevap": 0
+  },
+  {
+    "soru": "Müessir kelimesinin en yakın anlamı aşağıdakilerden hangisidir?",
+    "cevaplar": ["Eski", "Zamanın etkisinde kalmış", "Etkili, kuvvetli", "Önemsiz"],
+    "dogruCevap": 2
+  }
+]
