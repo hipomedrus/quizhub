@@ -96,6 +96,7 @@
       <p>Toplam 10 sorudan oluşan bu test ile kelime dağarcığını test et!</p>
       <button id="baslat-btn" disabled>Başla</button>
     </div>
+    
     <!-- İlerleme Barı (Başlangıçta gizli) -->
     <div class="ilerleme-bar" style="display: none;">
       <div class="ilerleme" style="width: 0%"></div>
@@ -108,36 +109,28 @@
       <button onclick="location.reload()">Tekrar Dene</button>
     </div>
   </div>
+
   <script>
-    // sorular (questions) dizisi, JSON dosyasından yüklenecek
     let sorular = [];
     let currentSoru = 0;
     let puan = 0;
 
-    // JSON dosyasından soruları (questions) yükleme işlemi
+    // Soruları yükleme işlemi
     fetch('questions.json')
       .then(response => {
-        if (!response.ok) {
-          throw new Error(`HTTP hatası! Durum: ${response.status}`);
-        }
+        if (!response.ok) throw new Error(`HTTP hatası! Durum: ${response.status}`);
         return response.json();
       })
       .then(data => {
-        console.log("Yüklenen sorular:", data); // Yüklenen verileri konsola yazdır
         sorular = data;
         initQuiz();
         document.getElementById('baslat-btn').disabled = false;
       })
-      .catch(error => {
-        console.error('Soru yüklenirken bir hata oluştu:', error);
-      });
+      .catch(error => console.error('Hata:', error));
 
     function baslat() {
-      // Karşılama ekranını gizle
       document.querySelector('.welcome-screen').classList.remove('active');
-      // İlerleme barını göster
       document.querySelector('.ilerleme-bar').style.display = 'block';
-      // İlk soruyu aktif hale getir
       document.querySelector('[data-soru="0"]').classList.add('active');
     }
 
@@ -146,7 +139,7 @@
       
       sorular.forEach((soru, index) => {
         const soruHTML = `
-          <div class="soru-container" data-soru="${index}" style="display: none;">
+          <div class="soru-container" data-soru="${index}">
             <div class="soru-no">Soru ${index + 1}</div>
             <div class="soru-text">${soru.soru}</div>
             <div class="cevaplar">
@@ -158,20 +151,19 @@
         `;
         container.insertAdjacentHTML('beforeend', soruHTML);
       });
-      updateIlerleme();
     }
 
     function cevapSec(secilenIndex, soruIndex) {
-      // Kullanıcı yalnızca aktif soruyu cevaplayabilir
       if (soruIndex !== currentSoru) return;
       
       if (secilenIndex === sorular[soruIndex].dogruCevap) {
         puan += Math.round(100 / sorular.length);
       }
-      currentSoru++;
       
+      document.querySelector(`[data-soru="${soruIndex}"]`).classList.remove('active');
+      currentSoru++;
+
       if (currentSoru < sorular.length) {
-        document.querySelector(`[data-soru="${soruIndex}"]`).classList.remove('active');
         document.querySelector(`[data-soru="${currentSoru}"]`).classList.add('active');
         updateIlerleme();
       } else {
@@ -189,20 +181,15 @@
       document.querySelector('.soru-container.active')?.classList.remove('active');
       document.querySelector('.sonuc-ekrani').style.display = 'block';
 
-      // Animasyonlu doğruluk oranı
       const dogrulukOraniElement = document.getElementById('dogruluk-orani');
       let currentPercentage = 0;
       const interval = setInterval(() => {
-        if (currentPercentage >= puan) {
-          clearInterval(interval);
-        } else {
-          currentPercentage++;
-          dogrulukOraniElement.textContent = `${currentPercentage}%`;
-        }
-      }, 20); // Animasyon hızı (ms)
+        currentPercentage >= puan 
+          ? clearInterval(interval)
+          : (dogrulukOraniElement.textContent = `${++currentPercentage}%`);
+      }, 20);
     }
 
-    // Başla butonuna tıklama olayını dinle
     document.getElementById('baslat-btn').addEventListener('click', baslat);
   </script>
 </body>
