@@ -2,26 +2,36 @@
   {
     "min": 0,
     "max": 20,
-    "message": "Daha çok çalışmalısın! Kelime dağarcığını geliştirmek için bol bol oku."
+    "message": "💀 Dostum, kelime dağarcığın o kadar kurak ki, kelimeler senden kaçıyor olabilir. Belki de sözlükle arkadaş olup biraz konuşmayı eklemelisin!"
   },
   {
     "min": 21,
-    "max": 40,
-    "message": "İyi başlangıç! Ancak hala gelişmek için yer var."
+    "max": 35,
+    "message": "😅 Kelimeler ağzına geldi ama cümleye dökülmedi gibi… Neyse, en azından 'merhaba' ve 'teşekkürler' demeyi biliyorsun! Daha çok kitap, daha az emoji öneriyoruz."
   },
   {
-    "min": 41,
-    "max": 60,
-    "message": "Orta seviye! İyi gidiyorsun, devam et."
+    "min": 36,
+    "max": 50,
+    "message": "🔥 Bir şeyler var, ama ateşleyemiyoruz! Kelime haznenin potansiyeli yüksek, biraz daha okuyarak ve bol bol sohbet ederek alevlendirebilirsin."
   },
   {
-    "min": 61,
-    "max": 80,
-    "message": "Harikasın! Kelime dağarcığın oldukça iyi."
+    "min": 51,
+    "max": 70,
+    "message": "🏹 Senin kafan kelimelerle dolu, ara sıra cümleye dökmekte zorlanıyor olabilirsin. Ama yine de çok iyi gidiyorsun! Biraz daha uğraşırsan kelimeleri kafesleyebilirsin."
   },
   {
-    "min": 81,
+    "min": 71,
+    "max": 85,
+    "message": "📚 Sen tam bir kelime cambazısın! Arada 'acaba bu kelimeyi fazla mı kullanıyorum?' diye düşündüğün oluyor mu? Oluyorsa tebrikler, olmuyorsa bir adım kaldı!"
+  },
+  {
+    "min": 51,
+    "max": 70,
+    "message": "👑 Kelimeleri o kadar iyi kullanıyorsun ki, bazen çevrendekiler 'bu kelime gerçek mi?' diye Google'a bakıyor olabilir. Seni sözlük yazarları kıskanıyor, haberin olsun."
+  },
+  {
+    "min": 96,
     "max": 100,
-    "message": "Mükemmelsin! Türkçe'ye hakimsin!"
+    "message": "🧠 Sen artık bir sözlükle aynı seviyedesin! Hatta TDK seninle iletişime geçip yeni kelimeler için fikir alıyor olabilir. Dil bilgisi konusunda resmen yürüyen bir ansiklopedisin!"
   }
 ]
