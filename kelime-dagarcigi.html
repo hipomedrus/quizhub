@@ -105,13 +105,13 @@
     <!-- Sonuç Ekranı -->
     <div class="sonuc-ekrani">
       <h1 id="dogruluk-orani">%</h1>
-      <p>Doğruluk Oranınız</p>
+      <p id="sonuc-mesaji"></p>
       <button onclick="location.reload()">Tekrar Dene</button>
     </div>
   </div>
-
   <script>
     let sorular = [];
+    let sonuclar = [];
     let currentSoru = 0;
     let puan = 0;
 
@@ -125,6 +125,17 @@
         sorular = data;
         initQuiz();
         document.getElementById('baslat-btn').disabled = false;
+      })
+      .catch(error => console.error('Hata:', error));
+
+    // Sonuç yazılarını yükleme işlemi
+    fetch('results.json')
+      .then(response => {
+        if (!response.ok) throw new Error(`HTTP hatası! Durum: ${response.status}`);
+        return response.json();
+      })
+      .then(data => {
+        sonuclar = data;
       })
       .catch(error => console.error('Hata:', error));
 
@@ -162,7 +173,6 @@
       
       document.querySelector(`[data-soru="${soruIndex}"]`).classList.remove('active');
       currentSoru++;
-
       if (currentSoru < sorular.length) {
         document.querySelector(`[data-soru="${currentSoru}"]`).classList.add('active');
         updateIlerleme();
@@ -181,12 +191,19 @@
       document.querySelector('.soru-container.active')?.classList.remove('active');
       document.querySelector('.sonuc-ekrani').style.display = 'block';
 
+      // Animasyonlu doğruluk oranı
       const dogrulukOraniElement = document.getElementById('dogruluk-orani');
       let currentPercentage = 0;
       const interval = setInterval(() => {
-        currentPercentage >= puan 
-          ? clearInterval(interval)
-          : (dogrulukOraniElement.textContent = `${++currentPercentage}%`);
+        if (currentPercentage >= puan) {
+          clearInterval(interval);
+          // Doğruluk oranına göre sonuç mesajını göster
+          const sonucMesaji = sonuclar.find(result => puan >= result.min && puan <= result.max)?.message || "Bilinmeyen sonuç!";
+          document.getElementById('sonuc-mesaji').textContent = sonucMesaji;
+        } else {
+          currentPercentage++;
+          dogrulukOraniElement.textContent = `${currentPercentage}%`;
+        }
       }, 20);
     }
 
