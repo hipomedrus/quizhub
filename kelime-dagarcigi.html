@@ -116,12 +116,16 @@
 
     // JSON dosyasından soruları (questions) yükleme işlemi
     fetch('questions.json')
-      .then(response => response.json())
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP hatası! Durum: ${response.status}`);
+        }
+        return response.json();
+      })
       .then(data => {
+        console.log("Yüklenen sorular:", data); // Yüklenen verileri konsola yazdır
         sorular = data;
-        // Sorular yüklendikten sonra quiz'i başlatan fonksiyon çağrılır
         initQuiz();
-        // Başla butonunu aktif hale getir
         document.getElementById('baslat-btn').disabled = false;
       })
       .catch(error => {
