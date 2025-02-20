@@ -12,13 +12,11 @@
       margin: 0;
       padding: 20px;
     }
-
     .container {
       max-width: 800px;
       margin: 0 auto;
       background-color: transparent;
     }
-
     .welcome-screen {
       text-align: center;
       padding: 50px 20px;
@@ -27,24 +25,20 @@
     .welcome-screen.active {
       display: block;
     }
-
     .soru-container {
       display: none;
     }
     .soru-container.active {
       display: block;
     }
-
     .soru-no {
       color: #666;
       margin-bottom: 10px;
     }
-
     .soru-text {
       font-size: 1.2em;
       margin-bottom: 30px;
     }
-
     .cevap-kutusu {
       background-color: #333;
       padding: 15px;
@@ -57,25 +51,31 @@
       background-color: #444;
       transform: translateX(10px);
     }
-
     .ilerleme-bar {
       width: 100%;
       height: 5px;
       background-color: #333;
       margin-bottom: 20px;
     }
-
     .ilerleme {
       height: 100%;
       background-color: #1860DB;
       transition: width 0.5s ease;
     }
-
     .sonuc-ekrani {
       display: none;
       text-align: center;
     }
-
+    .sonuc-ekrani h1 {
+      font-size: 4em;
+      font-weight: bold;
+      color: #1860DB;
+      margin: 20px 0;
+    }
+    .sonuc-ekrani p {
+      font-size: 1.2em;
+      color: #ccc;
+    }
     button {
       background-color: #1860DB;
       color: white;
@@ -92,11 +92,10 @@
     <!-- Karşılama Ekranı -->
     <div class="welcome-screen active">
       <h1>Kelime Dağarcığı Testi</h1>
-      <p>Türkçe'ye ne kadar hakimsin, test etmej ister misin?</p>
+      <p>Türkçe'ye ne kadar hakimsin, test etmek ister misin?</p>
       <p>Toplam 10 sorudan oluşan bu test ile kelime dağarcığını test et!</p>
       <button onclick="baslat()">Başla</button>
     </div>
-
     <!-- İlerleme Barı (Başlangıçta gizli) -->
     <div class="ilerleme-bar" style="display: none;">
       <div class="ilerleme" style="width: 0%"></div>
@@ -104,18 +103,16 @@
     
     <!-- Sonuç Ekranı -->
     <div class="sonuc-ekrani">
-      <h2>Test Tamamlandı!</h2>
-      <p>Puanınız: <span id="puan">0</span>/100</p>
+      <h1 id="dogruluk-orani">%</h1>
+      <p>Doğruluk Oranınız</p>
       <button onclick="location.reload()">Tekrar Dene</button>
     </div>
   </div>
-
   <script>
     // sorular (questions) dizisi, JSON dosyasından yüklenecek
     let sorular = [];
     let currentSoru = 0;
     let puan = 0;
-
     // JSON dosyasından soruları (questions) yükleme işlemi
     fetch('questions.json')
       .then(response => response.json())
@@ -127,20 +124,20 @@
       .catch(error => {
         console.error('Soru yüklenirken bir hata oluştu:', error);
       });
-
     function baslat() {
       // Karşılama ekranını gizle
       document.querySelector('.welcome-screen').classList.remove('active');
       // İlerleme barını göster
       document.querySelector('.ilerleme-bar').style.display = 'block';
+      // İlk soruyu aktif hale getir
+      document.querySelector('[data-soru="0"]').classList.add('active');
     }
-
     function initQuiz() {
       const container = document.querySelector('.container');
       
       sorular.forEach((soru, index) => {
         const soruHTML = `
-          <div class="soru-container" data-soru="${index}">
+          <div class="soru-container" data-soru="${index}" style="display: none;">
             <div class="soru-no">Soru ${index + 1}</div>
             <div class="soru-text">${soru.soru}</div>
             <div class="cevaplar">
@@ -152,12 +149,8 @@
         `;
         container.insertAdjacentHTML('beforeend', soruHTML);
       });
-
-      // İlk soruyu aktif hale getiriyoruz
-      document.querySelector('[data-soru="0"]').classList.add('active');
       updateIlerleme();
     }
-
     function cevapSec(secilenIndex, soruIndex) {
       // Kullanıcı yalnızca aktif soruyu cevaplayabilir
       if (soruIndex !== currentSoru) return;
@@ -165,7 +158,6 @@
       if (secilenIndex === sorular[soruIndex].dogruCevap) {
         puan += Math.round(100 / sorular.length);
       }
-
       currentSoru++;
       
       if (currentSoru < sorular.length) {
@@ -177,16 +169,25 @@
         bitirQuiz();
       }
     }
-
     function updateIlerleme() {
       const ilerlemeYuzde = (currentSoru / sorular.length) * 100;
       document.querySelector('.ilerleme').style.width = `${ilerlemeYuzde}%`;
     }
-
     function bitirQuiz() {
       document.querySelector('.soru-container.active')?.classList.remove('active');
       document.querySelector('.sonuc-ekrani').style.display = 'block';
-      document.getElementById('puan').textContent = puan;
+
+      // Animasyonlu doğruluk oranı
+      const dogrulukOraniElement = document.getElementById('dogruluk-orani');
+      let currentPercentage = 0;
+      const interval = setInterval(() => {
+        if (currentPercentage >= puan) {
+          clearInterval(interval);
+        } else {
+          currentPercentage++;
+          dogrulukOraniElement.textContent = `${currentPercentage}%`;
+        }
+      }, 20); // Animasyon hızı (ms)
     }
   </script>
 </body>
