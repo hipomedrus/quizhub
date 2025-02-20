@@ -94,7 +94,7 @@
       <h1>Kelime Dağarcığı Testi</h1>
       <p>Türkçe'ye ne kadar hakimsin, test etmek ister misin?</p>
       <p>Toplam 10 sorudan oluşan bu test ile kelime dağarcığını test et!</p>
-      <button onclick="baslat()">Başla</button>
+      <button id="baslat-btn" disabled>Başla</button>
     </div>
     <!-- İlerleme Barı (Başlangıçta gizli) -->
     <div class="ilerleme-bar" style="display: none;">
@@ -113,6 +113,7 @@
     let sorular = [];
     let currentSoru = 0;
     let puan = 0;
+
     // JSON dosyasından soruları (questions) yükleme işlemi
     fetch('questions.json')
       .then(response => response.json())
@@ -120,10 +121,13 @@
         sorular = data;
         // Sorular yüklendikten sonra quiz'i başlatan fonksiyon çağrılır
         initQuiz();
+        // Başla butonunu aktif hale getir
+        document.getElementById('baslat-btn').disabled = false;
       })
       .catch(error => {
         console.error('Soru yüklenirken bir hata oluştu:', error);
       });
+
     function baslat() {
       // Karşılama ekranını gizle
       document.querySelector('.welcome-screen').classList.remove('active');
@@ -132,6 +136,7 @@
       // İlk soruyu aktif hale getir
       document.querySelector('[data-soru="0"]').classList.add('active');
     }
+
     function initQuiz() {
       const container = document.querySelector('.container');
       
@@ -151,6 +156,7 @@
       });
       updateIlerleme();
     }
+
     function cevapSec(secilenIndex, soruIndex) {
       // Kullanıcı yalnızca aktif soruyu cevaplayabilir
       if (soruIndex !== currentSoru) return;
@@ -169,10 +175,12 @@
         bitirQuiz();
       }
     }
+
     function updateIlerleme() {
       const ilerlemeYuzde = (currentSoru / sorular.length) * 100;
       document.querySelector('.ilerleme').style.width = `${ilerlemeYuzde}%`;
     }
+
     function bitirQuiz() {
       document.querySelector('.soru-container.active')?.classList.remove('active');
       document.querySelector('.sonuc-ekrani').style.display = 'block';
@@ -189,6 +197,9 @@
         }
       }, 20); // Animasyon hızı (ms)
     }
+
+    // Başla butonuna tıklama olayını dinle
+    document.getElementById('baslat-btn').addEventListener('click', baslat);
   </script>
 </body>
 </html>
