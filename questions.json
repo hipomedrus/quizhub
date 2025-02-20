@@ -1,52 +1,129 @@
-[
+[  
   {
-    "soru": "Mütevazı kelimesinin anlamı aşağıdakilerden hangisidir?",
-    "cevaplar": ["Gösterişli", "Alçakgönüllü", "Kibirli", "Gururlu"],
+    "soru": "Hüzün kelimesinin en yakın anlamı aşağıdakilerden hangisidir?",
+    "cevaplar": ["Neşe", "Sevinç", "Üzüntü", "Mutluluk"],
+    "dogruCevap": 2
+  },
+  {
+    "soru": "Samimi kelimesinin en yakın anlamı aşağıdakilerden hangisidir?",
+    "cevaplar": ["Uzak", "Resmi", "İçten", "Soğuk"],
+    "dogruCevap": 2
+  }, 
+  {
+    "soru": "Şüphe kelimesinin en yakın anlamı aşağıdakilerden hangisidir?",
+    "cevaplar": ["İnanç", "Kuşku", "Kesinlik", "Mutluluk"],
+    "dogruCevap": 1
+  },
+  {
+    "soru": "İhtiyar kelimesinin en yakın anlamı aşağıdakilerden hangisidir?",
+    "cevaplar": ["Dinç", "Yaşlı", "Taze", "Genç"],
+    "dogruCevap": 1
+  },
+  {
+    "soru": "Mütevazı kelimesinin en yakın anlamı aşağıdakilerden hangisidir?",
+    "cevaplar": ["Kibirli", "Alçakgönüllü", "Gururlu", "Gösterişli"],
     "dogruCevap": 1
   },
   {
     "soru": "İstikrarlı kelimesinin en yakın anlamı aşağıdakilerden hangisidir?",
-    "cevaplar": ["Dengesiz", "Değişken", "Sabit", "Geçici"],
+    "cevaplar": ["Geçici", "Sabit", "Dengesiz", "Değişken"],
+    "dogruCevap": 1
+  },
+  {
+    "soru": "Vasıta kelimesinin en yakın anlamı aşağıdakilerden hangisidir?",
+    "cevaplar": ["Araç", "Yöntem", "Amaç", "Sonuç"],
+    "dogruCevap": 0
+  },
+
+  {
+    "soru": "İlham kelimesinin en yakın anlamı aşağıdakilerden hangisidir?",
+    "cevaplar": ["Aksilik", "Engel", "Esin", "Yorgunluk"],
     "dogruCevap": 2
   },
+
   {
     "soru": "Müreffeh kelimesi aşağıdakilerden hangisini ifade eder?",
-    "cevaplar": ["Yoksul", "Refah içinde, zengin", "Yalnız", "Sefil"],
+    "cevaplar": ["Yalnız", "Sefil", "Yoksul", "Refahlı"],
+    "dogruCevap": 3
+  },
+  {
+    "soru": "Mecazi kelimesinin en yakın anlamı aşağıdakilerden hangisidir?",
+    "cevaplar": ["Doğrudan", "Betimsel", "Gerçek anlamıyla", "İronik"],
     "dogruCevap": 1
   },
   {
-    "soru": "Mecazi kelimesinin anlamı aşağıdakilerden hangisidir?",
-    "cevaplar": ["Gerçek anlamıyla", "İronik", "Benzetme yoluyla anlatılan", "Doğrudan"],
+    "soru": "Mütemadiyen kelimesinin en yakın anlamı aşağıdakilerden hangisidir?",
+    "cevaplar": ["Rastgele", "Sınırlı", "Aralıklı", "Sürekli"],
+    "dogruCevap": 3
+  },
+  {
+    "soru": "Nimet kelimesinin en yakın anlamı aşağıdakilerden hangisidir?",
+    "cevaplar": ["Dertsizlik", "Felaket", "Lütuf", "Talih"],
     "dogruCevap": 2
   },
   {
-    "soru": "Mütemadiyen kelimesinin anlamı aşağıdakilerden hangisidir?",
-    "cevaplar": ["Aralıklı", "Kesintisiz, sürekli", "Rastgele", "Sınırlı"],
+    "soru": "Fevkalade kelimesinin en yakın anlamı aşağıdakilerden hangisidir?",
+    "cevaplar": ["Berbat", "Mükemmel", "Vasat", "Orta"],
     "dogruCevap": 1
   },
   {
-    "soru": "Vasıta kelimesi aşağıdakilerden hangisini en doğru şekilde ifade eder?",
-    "cevaplar": ["Amaç", "Sonuç", "Araç, enstrüman", "Yöntem"],
+    "soru": "Teşvik kelimesinin en yakın anlamı aşağıdakilerden hangisidir?",
+    "cevaplar": ["Zorlama", "Reddetme", "Destekleme", "Engelleme"],
     "dogruCevap": 2
   },
   {
-    "soru": "Muktedir kelimesinin anlamı aşağıdakilerden hangisidir?",
-    "cevaplar": ["Güçsüz", "Etkisiz", "Yetenekli, kudret sahibi", "İsteksiz"],
+    "soru": "Müteşekkir kelimesinin en yakın anlamı aşağıdakilerden hangisidir?",
+    "cevaplar": ["İlgisiz", "Kırgın", "Nankör", "Minnettar"],
+    "dogruCevap": 3
+  },
+  {
+    "soru": "Varlık kelimesinin en yakın anlamı aşağıdakilerden hangisidir?",
+    "cevaplar": ["Fakirlik", "Yokluk", "Mevcut olma durumu", "Zenginlik"],
     "dogruCevap": 2
   },
   {
-    "soru": "Nimet kelimesinin anlamı aşağıdakilerden hangisidir?",
-    "cevaplar": ["Talih", "Lütuf, nimet", "Felaket", "Dert"],
+    "soru": "Muktedir kelimesinin en yakın anlamı aşağıdakilerden hangisidir?",
+    "cevaplar": ["İsteksiz", "Etkisiz", "Güçsüz", "Kudretli"],
+    "dogruCevap": 3
+  },
+  {
+    "soru": "Müstesna kelimesinin en yakın anlamı aşağıdakilerden hangisidir?",
+    "cevaplar": ["Ortalama", "İstisnai", "Sıradan", "Standart"],
     "dogruCevap": 1
   },
   {
-    "soru": "Müşkülpesent kelimesi aşağıdakilerden hangisini ifade eder?",
-    "cevaplar": ["Titiz, seçici", "Kolay beğenen", "Umursamaz", "Hoşnutsuz"],
-    "dogruCevap": 0
+    "soru": "Münzevi kelimesinin en yakın anlamı aşağıdakilerden hangisidir?",
+    "cevaplar": ["Dışa dönük", "Kalabalığı seven", "Yalnızlığı seven", "Sosyal"],
+    "dogruCevap": 2
+  },
+  {
+    "soru": "Muvaffak kelimesinin en yakın anlamı aşağıdakilerden hangisidir?",
+    "cevaplar": ["İlgisiz", "Başarılı", "Başarısız", "Yetersiz"],
+    "dogruCevap": 1
+  },
+  {
+    "soru": "Münhasır kelimesinin en yakın anlamı aşağıdakilerden hangisidir?",
+    "cevaplar": ["Basit", "Genel", "Özel", "Sıradan"],
+    "dogruCevap": 2
+  },
+  {
+    "soru": "Müşkülpesent kelimesinin en yakın anlamı aşağıdakilerden hangisidir?",
+    "cevaplar": ["Umursamaz", "Avanak", "Hoşnutsuz", "Titiz"],
+    "dogruCevap": 3
   },
   {
     "soru": "Müessir kelimesinin en yakın anlamı aşağıdakilerden hangisidir?",
-    "cevaplar": ["Eski", "Zamanın etkisinde kalmış", "Etkili, kuvvetli", "Önemsiz"],
-    "dogruCevap": 2
+    "cevaplar": ["Yakıcı", "Dokunaklı", "Önemsiz", "Eski"],
+    "dogruCevap": 1
+  },
+  {
+    "soru": "Münferit kelimesinin en yakın anlamı aşağıdakilerden hangisidir?",
+    "cevaplar": ["Ortak", "Tek", "Genel", "Kolektif"],
+    "dogruCevap": 1
+  },
+  {
+    "soru": "Mütehassıs kelimesinin en yakın anlamı aşağıdakilerden hangisidir?",
+    "cevaplar": ["Uzman", "Yetersiz", "Acemi", "Deneyimsiz"],
+    "dogruCevap": 0
   }
 ]
