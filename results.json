@@ -1,0 +1,27 @@
+[
+  {
+    "min": 0,
+    "max": 20,
+    "message": "Daha çok çalışmalısın! Kelime dağarcığını geliştirmek için bol bol oku."
+  },
+  {
+    "min": 21,
+    "max": 40,
+    "message": "İyi başlangıç! Ancak hala gelişmek için yer var."
+  },
+  {
+    "min": 41,
+    "max": 60,
+    "message": "Orta seviye! İyi gidiyorsun, devam et."
+  },
+  {
+    "min": 61,
+    "max": 80,
+    "message": "Harikasın! Kelime dağarcığın oldukça iyi."
+  },
+  {
+    "min": 81,
+    "max": 100,
+    "message": "Mükemmelsin! Türkçe'ye hakimsin!"
+  }
+]
