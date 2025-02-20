@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QuizHub - Testlerin Ana Sayfası</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 30px;
+    }
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    .quiz-box {
+      background-color: #1860DB;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      color: #fff;
+      cursor: pointer;
+      padding: 20px;
+      text-align: center;
+      width: 200px;
+      height: 200px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .quiz-box:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+    }
+    .quiz-box h2 {
+      font-size: 1.2em;
+      margin: 0;
+    }
+    .quiz-box p {
+      font-size: 0.9em;
+      margin-top: 10px;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+  </style>
+</head>
+<body>
+  <h1>QuizHub</h1>
+  <p>Tüm testlere buradan erişebilirsiniz!</p>
+
+  <!-- Test Kutucukları -->
+  <div class="container">
+    <a href="kelime-dagarcigi-testi/index.html" class="quiz-box">
+      <h2>Kelime Dağarcığı Testi</h2>
+      <p>Türkçe kelime bilginizi ölçün.</p>
+    </a>
+    <a href="matematik-testi/index.html" class="quiz-box">
+      <h2>Matematik Testi</h2>
+      <p>Temel matematik becerilerinizi sınayın.</p>
+    </a>
+    <a href="bilim-testi/index.html" class="quiz-box">
+      <h2>Bilim Testi</h2>
+      <p>Bilimsel bilginizi test edin.</p>
+    </a>
+    <a href="genel-kultur-testi/index.html" class="quiz-box">
+      <h2>Genel Kültür Testi</h2>
+      <p>Genel kültür seviyenizi ölçün.</p>
+    </a>
+    <a href="ingilizce-testi/index.html" class="quiz-box">
+      <h2>İngilizce Testi</h2>
+      <p>İngilizce kelime haznenizi geliştirin.</p>
+    </a>
+  </div>
+</body>
+</html>
