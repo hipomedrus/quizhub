@@ -1,6 +1,6 @@
 #
 
-[Kelime Dağarcığı Testi](https://hipomedrus.github.io/quizhub/kelime-dagarcigi.html)
+[Kelime Dağarcığı Testine Başlamak İçin Tıklayın](https://hipomedrus.github.io/quizhub/kelime-dagarcigi.html)
 
 # 📖 Proje Hakkında 
 
