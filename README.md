@@ -1,14 +1,16 @@
-#
+# **Kelime Dağarcığı Testine gitmek için [Tıklayın](https://hipomedrus.github.io/quizhub/kelime-dagarcigi.html)**
 
-[Kelime Dağarcığı Testine Başlamak İçin Tıklayın](https://hipomedrus.github.io/quizhub/kelime-dagarcigi.html)
 
-# 📖 Proje Hakkında 
+---
+
+
+## 📖 Proje Hakkında 
 
 Kelime Dağarcığı Testi , Türkçe kelime bilginizi ölçmek ve geliştirmek için tasarlanmış etkileşimli bir web uygulamasıdır. Bu proje, kullanıcıların kelime dağarcıklarını test etmelerine olanak tanırken aynı zamanda eğlenceli bir deneyim sunar. Toplam 10 sorudan oluşan test, kullanıcılara çeşitli kelimeler ve anlamları üzerine sorular sorar. Test sonunda, doğruluk oranınıza göre kişiselleştirilmiş bir geri bildirim alırsınız. 
 
 Bu proje, hem öğrenme hem de eğlenme amacıyla tasarlanmıştır. Türkçe'de kendini geliştirmek isteyen herkes için idealdir!
 
-# ✨ Özellikler 
+## ✨ Özellikler 
 
 - Etkileşimli Soru-Cevap Arayüzü:  Kullanıcı dostu bir arayüzle, sorulara tıklayarak cevap verebilirsiniz.
 - İlerleme Barı:  Test sırasında ilerlemenizi canlı olarak takip edebilirsiniz.
@@ -18,7 +20,7 @@ Bu proje, hem öğrenme hem de eğlenme amacıyla tasarlanmıştır. Türkçe'de
      
      
 
-# 🛠️ Teknolojiler 
+## 🛠️ Teknolojiler 
 
 Bu proje aşağıdaki teknolojilerle geliştirilmiştir: 
 
@@ -28,7 +30,7 @@ Bu proje aşağıdaki teknolojilerle geliştirilmiştir:
 - JSON:  Sorular ve sonuç mesajlarının depolanması için kullanıldı.
      
 
-# 📂 Proje Yapısı 
+## 📂 Proje Yapısı 
 
 Proje dizini şu şekilde organize edilmiştir: 
  
@@ -45,7 +47,7 @@ Proje dizini şu şekilde organize edilmiştir:
 
      
 
-# 📜 Lisans 
+## 📜 Lisans 
 
 Bu proje GNU Lisansı  altında lisanslanmıştır. Detaylı bilgi için `LICENSE` dosyasını inceleyebilirsiniz. 
 
